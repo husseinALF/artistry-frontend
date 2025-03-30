@@ -1,0 +1,146 @@
+.navbar {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navbar-logo h1 {
+  color: var(--text-light);
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar-menu a {
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.navbar-menu a:hover {
+  color: var(--tertiary-color);
+}
+
+.navbar-menu .btn {
+  background-color: var(--secondary-color);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+}
+
+.navbar-menu .btn:hover {
+  background-color: var(--tertiary-color);
+  color: var(--primary-color);
+}
+
+.navbar-toggle {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.5rem;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  border-radius: var(--border-radius);
+  min-width: 180px;
+  z-index: 1001;
+  display: none;
+  padding: 0.5rem 0;
+}
+
+.dropdown.active .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a,
+.dropdown-menu button {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--text-dark);
+  text-align: left;
+  width: 100%;
+  background: none;
+  border: none;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+  background-color: var(--background-light);
+  color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    padding: 1rem;
+    display: none;
+  }
+
+  .navbar-menu.active {
+    display: flex;
+  }
+
+  .navbar-menu li {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-top: 0.5rem;
+  }
+
+  .dropdown-menu a,
+  .dropdown-menu button {
+    color: var(--text-light);
+  }
+}
