@@ -1,0 +1,52 @@
+.gallery-page {
+  padding: 2rem 0;
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.gallery-header h1 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.gallery-header p {
+  color: var(--secondary-color);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.artwork-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.loading,
+.error-message,
+.empty-gallery {
+  text-align: center;
+  padding: 2rem;
+  margin: 1rem auto;
+  max-width: 600px;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.error-message {
+  color: #e53e3e;
+}
+
+.empty-gallery {
+  color: #666;
+}
+
+@media (max-width: 480px) {
+  .artwork-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
