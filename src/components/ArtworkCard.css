@@ -1,0 +1,53 @@
+.artwork-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.artwork-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.artwork-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artwork-info {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.artwork-info h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+
+.artwork-artist {
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.artwork-description {
+  color: #718096;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+@media (max-width: 480px) {
+  .artwork-image {
+    height: 180px;
+  }
+}
