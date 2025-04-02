@@ -30,9 +30,14 @@ const Profile = () => {
             import.meta.env.VITE_API_URL || "http://localhost:5000"
           }/api/gallery/user/artworks`,
           {
+            method: "GET",
             headers: {
               Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+              Accept: "application/json",
             },
+            credentials: "include",
+            mode: "cors",
           }
         );
 
@@ -87,7 +92,9 @@ const Profile = () => {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
+          credentials: "include",
         }
       );
 
@@ -126,6 +133,7 @@ const Profile = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
+          credentials: "include",
           body: JSON.stringify(editForm),
         }
       );
