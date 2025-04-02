@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Artistry</h3>
           <p>
-            Ett online-galleri för konstverk från talangfulla konstnärer.
+            Ett online-galleri där alla kan dela sina bilder.
             Utforska, dela och hitta inspiration.
           </p>
         </div>
