@@ -7,7 +7,6 @@ const Upload = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
-  // Kontrollera inloggningsstatus
   useEffect(() => {
     const checkAuth = () => {
       const token = localStorage.getItem("token");
@@ -23,7 +22,7 @@ const Upload = () => {
   }, [navigate]);
 
   if (!isLoggedIn) {
-    return null; // Returnera inget medan omdirigering sker
+    return null;
   }
 
   return (

@@ -12,13 +12,12 @@ const UploadArtwork = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // Kontrollera filstorlek (max 10 MB)
       if (file.size > 10 * 1024 * 1024) {
         setMessage({
           text: "Filen är för stor. Välj en bild som är mindre än 10 MB.",
           type: "error",
         });
-        e.target.value = null; // Återställ fil-inputen
+        e.target.value = null;
         return;
       }
 
@@ -59,21 +58,6 @@ const UploadArtwork = () => {
         return;
       }
 
-      // Logga data för felsökning
-      console.log(
-        "Sending to:",
-        `${
-          import.meta.env.VITE_API_URL || "http://localhost:5000"
-        }/api/gallery/`
-      );
-      console.log("Token:", token);
-      console.log("Title:", title);
-      console.log("Description:", description);
-      console.log("Image:", image);
-      console.log("Image type:", image.type);
-      console.log("Image size:", image.size);
-
-      // Kontrollera att bildfilen har rätt format
       const validImageTypes = [
         "image/jpeg",
         "image/png",
@@ -89,26 +73,23 @@ const UploadArtwork = () => {
         return;
       }
 
-      // Förenklad fetch utan onödiga headers
       const response = await fetch(
         `${
           import.meta.env.VITE_API_URL || "http://localhost:5000"
         }/api/gallery/`,
         {
           method: "POST",
-          // Låt browsern själv hantera Content-Type för FormData
+
           headers: {
             Authorization: `Bearer ${token}`,
           },
           body: formData,
-          // Inkludera credentials för att skicka cookies om det behövs
+
           credentials: "include",
         }
       );
 
-      // Kontrollera om svaret är OK innan vi försöker tolka JSON
       if (response.ok) {
-        // Ta emot och använda data
         const data = await response.json();
         console.log("Svar från server:", data);
 
@@ -118,7 +99,6 @@ const UploadArtwork = () => {
         setImage(null);
         setPreview("");
       } else {
-        // Hantera olika typer av fel baserat på statuskoden
         if (response.status === 401) {
           setMessage({
             text: "Du är inte längre inloggad. Logga in igen.",
@@ -132,7 +112,7 @@ const UploadArtwork = () => {
         } else if (response.status === 422) {
           try {
             const errorData = await response.json();
-            console.log("422 Error details:", errorData);
+
             setMessage({
               text:
                 errorData.message ||
@@ -158,7 +138,6 @@ const UploadArtwork = () => {
               type: "error",
             });
           } catch (error) {
-            // Fånga fel vid JSON-tolkning
             console.error("Kunde inte tolka JSON-svar:", error);
             setMessage({
               text: `Serverfel (${response.status}): ${response.statusText}`,
@@ -228,7 +207,7 @@ const UploadArtwork = () => {
         </div>
 
         <button type="submit" className="btn" disabled={isLoading}>
-          {isLoading ? "Laddar upp..." : "Ladda upp konstverk"}
+          {isLoading ? "Laddar upp..." : "Ladda upp bilden"}
         </button>
       </form>
     </div>
